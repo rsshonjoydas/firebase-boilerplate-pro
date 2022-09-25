@@ -1,0 +1,32 @@
+.title {
+  @apply tracking-wider font-semibold text-gray-500 ml-2 my-auto;
+
+  &-text {
+    @apply text-opacity-80 mr-auto transition duration-300 ease-in-out;
+  }
+
+  &-hashtag {
+    @apply text-lg;
+  }
+
+  &-main {
+    text-align: center;
+    h2 {
+      position: relative;
+      text-transform: uppercase;
+      font-size: 4rem;
+      font-weight: 700;
+      z-index: 1;
+      .bg-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transition: all 0.4s ease-in-out;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+        font-weight: 800;
+        font-size: 6.3rem;
+      }
+    }
+  }
+}
