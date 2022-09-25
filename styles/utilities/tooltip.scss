@@ -1,0 +1,17 @@
+.tooltip {
+  @apply absolute w-auto p-2 m-2 min-w-max rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 group-hover:scale-100;
+
+  &-left {
+    @apply origin-left left-14;
+  }
+
+  &-right {
+    @apply origin-right right-14;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tooltip-up {
+    @apply origin-top -top-12 -mr-14;
+  }
+}
