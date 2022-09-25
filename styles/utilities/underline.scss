@@ -1,0 +1,41 @@
+.underline-animation {
+  color: theme('colors.primary.DEFAULT');
+  font-size: 1.3rem;
+  text-decoration: none;
+  margin-top: 1em;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.5em;
+  margin-left: -0.5em;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    border-bottom: 3px solid theme('colors.primary.DEFAULT');
+    border-radius: 1em;
+    bottom: 0.3em;
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &:before {
+    width: 1em;
+    transform-origin: left;
+  }
+
+  &:after {
+    width: 82%;
+    left: 1em;
+    transform: translateX(110%);
+  }
+
+  &:hover:before {
+    transform: scaleX(0.3);
+  }
+
+  &:hover:after {
+    transform: translateX(0);
+  }
+}
