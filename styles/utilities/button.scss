@@ -43,3 +43,39 @@
 .menu-btn {
   @apply absolute h-11 w-11 top-[10px] ml-3 rounded-md transition-all duration-300 cursor-pointer flex items-center justify-center text-white bg-gray-400 dark:bg-gray-800 outline-none border-none focus:ring-0;
 }
+
+.theme-btn {
+  @apply text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 text-sm p-2.5;
+
+  &-primary {
+    @apply rounded-lg focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 focus:outline-none;
+  }
+
+  &-secondary {
+    top: 5%;
+    right: 3%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+  }
+
+  &:active {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+}
