@@ -2,11 +2,14 @@ import {
   browserLocalPersistence,
   browserSessionPersistence,
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   sendEmailVerification,
   setPersistence,
   signInWithEmailAndPassword,
+  signInWithPopup,
   updateProfile,
 } from 'firebase/auth';
+import { NextRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { auth } from '../../config';
 import { ILogin, IRegister } from '../../interface/authType';
@@ -56,10 +59,23 @@ const login = async (user: ILogin) => {
   }
 };
 
+const google = async (router: NextRouter) => {
+  try {
+    const res = await signInWithPopup(auth, new GoogleAuthProvider());
+
+    router?.push('/');
+
+    return res.user;
+  } catch (err: any) {
+    return firebaseError(err);
+  }
+};
+
 const authAction = {
   register,
   verify,
   login,
+  google,
 };
 
 export default authAction;

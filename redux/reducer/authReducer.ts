@@ -1,3 +1,4 @@
+import { NextRouter } from 'next/router';
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-return-await */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
@@ -17,6 +18,11 @@ export const verify = createAsyncThunk(
 export const login = createAsyncThunk(
   'auth/login',
   async (user: ILogin) => await authAction.login(user)
+);
+
+export const google = createAsyncThunk(
+  'auth/google',
+  async (router: NextRouter) => await authAction.google(router)
 );
 
 const initialState: AuthState = {
