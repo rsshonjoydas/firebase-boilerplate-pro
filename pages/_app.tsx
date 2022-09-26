@@ -4,6 +4,8 @@ import { NextPage } from 'next';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import { ReactElement, ReactNode, useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/index.scss';
 
 export type NextPageWithLayout = NextPage & {
@@ -38,6 +40,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return getLayout(
     <ThemeProvider attribute='class'>
       <Component {...pageProps} />
+      <ToastContainer theme='colored' />
     </ThemeProvider>
   );
 }
