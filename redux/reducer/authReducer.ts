@@ -3,6 +3,7 @@ import { NextRouter } from 'next/router';
 /* eslint-disable no-return-await */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { AuthState, ILogin, IRegister } from '../../interface/authType';
+
 import authAction from '../action/authAction';
 
 export const register = createAsyncThunk(
@@ -23,6 +24,11 @@ export const login = createAsyncThunk(
 export const google = createAsyncThunk(
   'auth/google',
   async (router: NextRouter) => await authAction.google(router)
+);
+
+export const facebook = createAsyncThunk(
+  'auth/facebook',
+  async (router: NextRouter) => await authAction.facebook(router)
 );
 
 const initialState: AuthState = {

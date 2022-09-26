@@ -2,6 +2,7 @@ import {
   browserLocalPersistence,
   browserSessionPersistence,
   createUserWithEmailAndPassword,
+  FacebookAuthProvider,
   GoogleAuthProvider,
   sendEmailVerification,
   setPersistence,
@@ -13,6 +14,7 @@ import { NextRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { auth } from '../../config';
 import { ILogin, IRegister } from '../../interface/authType';
+
 import firebaseError from '../../utils/firebaseError';
 
 const register = async (user: IRegister) => {
@@ -71,11 +73,24 @@ const google = async (router: NextRouter) => {
   }
 };
 
+const facebook = async (router: NextRouter) => {
+  try {
+    const res = await signInWithPopup(auth, new FacebookAuthProvider());
+
+    router?.push('/');
+
+    return res.user;
+  } catch (err: any) {
+    return firebaseError(err);
+  }
+};
+
 const authAction = {
   register,
   verify,
   login,
   google,
+  facebook,
 };
 
 export default authAction;
