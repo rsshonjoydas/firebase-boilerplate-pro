@@ -6,6 +6,7 @@ import type { AppProps } from 'next/app';
 import { ReactElement, ReactNode, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AuthProvider from '../AuthProvider';
 import { wrapper } from '../redux/store';
 import '../styles/index.scss';
 
@@ -39,10 +40,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   }
 
   return getLayout(
-    <ThemeProvider attribute='class'>
-      <Component {...pageProps} />
-      <ToastContainer theme='colored' />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider attribute='class'>
+        <Component {...pageProps} />
+        <ToastContainer theme='colored' />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
