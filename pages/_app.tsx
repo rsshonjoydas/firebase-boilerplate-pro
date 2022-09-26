@@ -6,6 +6,7 @@ import type { AppProps } from 'next/app';
 import { ReactElement, ReactNode, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { wrapper } from '../redux/store';
 import '../styles/index.scss';
 
 export type NextPageWithLayout = NextPage & {
@@ -45,4 +46,4 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
