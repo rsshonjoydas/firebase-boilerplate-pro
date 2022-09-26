@@ -25,8 +25,20 @@ const register = async (user: IRegister) => {
   }
 };
 
+const verify = async (user: any) => {
+  try {
+    await sendEmailVerification(user);
+    toast.success('Activate your email');
+    user.router?.push('/');
+  } catch (err: any) {
+    return firebaseError(err);
+  }
+  return true;
+};
+
 const authAction = {
   register,
+  verify,
 };
 
 export default authAction;

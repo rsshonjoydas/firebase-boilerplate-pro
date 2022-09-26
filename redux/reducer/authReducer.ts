@@ -9,6 +9,11 @@ export const register = createAsyncThunk(
   async (user: IRegister) => await authAction.register(user)
 );
 
+export const verify = createAsyncThunk(
+  'auth/verify',
+  async (user: any) => await authAction.verify(user)
+);
+
 const initialState: AuthState = {
   currentUser: undefined,
   loading: false,
