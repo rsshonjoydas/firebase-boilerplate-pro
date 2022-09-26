@@ -2,7 +2,7 @@ import { NextRouter } from 'next/router';
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-return-await */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { AuthState, ILogin, IRegister } from '../../interface/authType';
+import { AuthState, IForgotPassword, ILogin, IRegister } from '../../interface/authType';
 
 import authAction from '../action/authAction';
 
@@ -29,6 +29,11 @@ export const google = createAsyncThunk(
 export const facebook = createAsyncThunk(
   'auth/facebook',
   async (router: NextRouter) => await authAction.facebook(router)
+);
+
+export const forgotPassword = createAsyncThunk(
+  'auth/forgot-password',
+  async (user: IForgotPassword) => await authAction.forgotPassword(user)
 );
 
 const initialState: AuthState = {

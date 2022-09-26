@@ -5,6 +5,7 @@ import {
   FacebookAuthProvider,
   GoogleAuthProvider,
   sendEmailVerification,
+  sendPasswordResetEmail,
   setPersistence,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -13,7 +14,7 @@ import {
 import { NextRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { auth } from '../../config';
-import { ILogin, IRegister } from '../../interface/authType';
+import { IForgotPassword, ILogin, IRegister } from '../../interface/authType';
 
 import firebaseError from '../../utils/firebaseError';
 
@@ -85,12 +86,25 @@ const facebook = async (router: NextRouter) => {
   }
 };
 
+const forgotPassword = async (user: IForgotPassword) => {
+  try {
+    await sendPasswordResetEmail(auth, user.email);
+
+    user.router?.push('/login');
+
+    return toast.success('Success! Check your email.');
+  } catch (err: any) {
+    return firebaseError(err);
+  }
+};
+
 const authAction = {
   register,
   verify,
   login,
   google,
   facebook,
+  forgotPassword,
 };
 
 export default authAction;

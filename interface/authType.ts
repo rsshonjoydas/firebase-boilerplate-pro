@@ -23,3 +23,8 @@ export interface ILogin {
   remember?: boolean;
   router?: NextRouter;
 }
+
+export interface IForgotPassword {
+  email: string;
+  router?: NextRouter;
+}
