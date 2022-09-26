@@ -9,11 +9,9 @@ function classNames(...classes: string[]) {
 const NavProfile = () => (
   <Menu as='div' className='relative inline-block text-left'>
     <Menu.Button>
-      <Link href='/profile'>
-        <div className='inline-flex w-full px-4 py-2 text-sm font-medium text-gray-700 rounded-md dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500'>
-          <span className='flex items-center hover:animate-pulse'>RS Shonjoy</span>
-        </div>
-      </Link>
+      <div className='inline-flex w-full px-4 py-2 text-sm font-medium text-gray-700 rounded-md dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500'>
+        <span className='flex items-center hover:animate-pulse'>RS Shonjoy</span>
+      </div>
     </Menu.Button>
 
     <Transition
