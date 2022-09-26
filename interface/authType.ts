@@ -16,3 +16,10 @@ export interface IRegister {
   termsAndConditions?: boolean;
   router?: NextRouter;
 }
+
+export interface ILogin {
+  email: string;
+  password: string;
+  remember?: boolean;
+  router?: NextRouter;
+}

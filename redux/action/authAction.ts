@@ -1,11 +1,15 @@
 import {
+  browserLocalPersistence,
+  browserSessionPersistence,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  setPersistence,
+  signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { auth } from '../../config';
-import { IRegister } from '../../interface/authType';
+import { ILogin, IRegister } from '../../interface/authType';
 import firebaseError from '../../utils/firebaseError';
 
 const register = async (user: IRegister) => {
@@ -36,9 +40,26 @@ const verify = async (user: any) => {
   return true;
 };
 
+const login = async (user: ILogin) => {
+  try {
+    const { email, password, remember } = user;
+
+    await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
+
+    const res = await signInWithEmailAndPassword(auth, email, password);
+
+    user.router?.push('/');
+
+    return res.user;
+  } catch (err: any) {
+    return firebaseError(err);
+  }
+};
+
 const authAction = {
   register,
   verify,
+  login,
 };
 
 export default authAction;
