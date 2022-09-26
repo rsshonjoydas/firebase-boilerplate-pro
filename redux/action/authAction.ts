@@ -9,6 +9,7 @@ import {
   setPersistence,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from 'firebase/auth';
 import { NextRouter } from 'next/router';
@@ -98,6 +99,16 @@ const forgotPassword = async (user: IForgotPassword) => {
   }
 };
 
+const logout = async (router: NextRouter) => {
+  try {
+    await signOut(auth);
+    router.push('/login');
+  } catch (err: any) {
+    return firebaseError(err);
+  }
+  return true;
+};
+
 const authAction = {
   register,
   verify,
@@ -105,6 +116,7 @@ const authAction = {
   google,
   facebook,
   forgotPassword,
+  logout,
 };
 
 export default authAction;
