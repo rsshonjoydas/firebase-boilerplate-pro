@@ -1,11 +1,11 @@
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
 const Img = ({ width, height, src, alt, loading, blurDataURL, placeholder, ...rest }: any) => {
   const lazyRoot = useRef(null);
 
   return (
-    <Image
+    <motion.img
       lazyRoot={lazyRoot}
       width={width}
       height={height}
