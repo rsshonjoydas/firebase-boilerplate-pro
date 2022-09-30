@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 import { useAppDispatch } from '../../../../redux/hook';
 import { logout } from '../../../../redux/reducer/authReducer';
+import UserDisplayName from '../../../UserInfo/UserDisplayName';
+import UserPhoto from '../../../UserInfo/UserPhoto';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -17,7 +19,10 @@ const NavProfile = () => {
     <Menu as='div' className='relative inline-block text-left'>
       <Menu.Button>
         <div className='inline-flex w-full px-4 py-2 text-sm font-medium text-gray-700 rounded-md dark:text-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500'>
-          <span className='flex items-center hover:animate-pulse'>RS Shonjoy</span>
+          <span className='-mt-2'>
+            <UserPhoto />
+          </span>
+          <UserDisplayName />
         </div>
       </Menu.Button>
 

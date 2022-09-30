@@ -1,6 +1,8 @@
 import { faBell, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Theme from '../../Theme';
+import UserDisplayName from '../../UserInfo/UserDisplayName';
+import UserPhoto from '../../UserInfo/UserPhoto';
 
 const Search = () => (
   <div className='search'>
@@ -13,11 +15,14 @@ const BellIcon = () => <FontAwesomeIcon icon={faBell} className='h-5 mb-3 top-na
 
 const TopNavigation = () => (
   <div className='top-navigation'>
-    <span className='ml-20'>RS Shonjoy</span>
+    <span className='ml-20'>
+      <UserDisplayName />
+    </span>
     <Search />
     <div className='flex items-end justify-center mr-4'>
       <BellIcon />
       <Theme className='dark:hover:bg-gray-600' />
+      <UserPhoto />
     </div>
   </div>
 );
