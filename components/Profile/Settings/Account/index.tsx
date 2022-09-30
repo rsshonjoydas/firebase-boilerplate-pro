@@ -1,6 +1,7 @@
 import Border from '../../../Border';
 import Avatar from './Avatar';
 import ChangeDisplayName from './ChangeDisplayName';
+import ChangeEmail from './ChangeEmail';
 
 const Account = () => (
   <>
@@ -23,6 +24,7 @@ const Account = () => (
               <div className='px-4 py-5 bg-white/60 dark:bg-slate-800/30 sm:p-6 dark:text-gray-400'>
                 <Avatar />
                 <ChangeDisplayName />
+                <ChangeEmail />
               </div>
             </div>
           </div>
