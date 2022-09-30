@@ -4,6 +4,7 @@ import { useState } from 'react';
 import DashboardLayout from '../../../components/Layout/Dashboard';
 import { Dropdown, SidebarBlock } from '../../../components/Layout/Dashboard/SidebarTopic';
 import Account from '../../../components/Profile/Settings/Account';
+import ChangePassword from '../../../components/Profile/Settings/ChangePassword';
 
 const topics = ['change-profile', 'change-name', 'change-email', 'password'];
 
@@ -36,6 +37,7 @@ const Settings = () => {
       )}
       <DashboardLayout title='Settings'>
         <Account />
+        <ChangePassword />
       </DashboardLayout>
     </div>
   );

@@ -38,3 +38,15 @@ export const profileSchema = Yup.object().shape({
 export const nameSchema = Yup.object().shape({
   name: Yup.string().required('Your name is required.').min(3, 'Too short.').max(25, 'Too long.'),
 });
+
+export const changePasswordSchema = Yup.object().shape({
+  oldPassword: Yup.string()
+    .required('The old password is required.')
+    .min(8, 'The password is too short.'),
+  newPassword: Yup.string()
+    .required('The new password is required.')
+    .min(8, 'The password is too short.'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('newPassword'), null], `Password doesn't match`)
+    .required('You need to confirm your password.'),
+});
