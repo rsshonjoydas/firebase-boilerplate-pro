@@ -8,6 +8,7 @@ import {
   sendEmailVerification,
   updateCurrentUser,
   updateEmail,
+  updatePassword,
   updateProfile,
 } from 'firebase/auth';
 import { NextRouter } from 'next/router';
@@ -76,6 +77,19 @@ export const changeEmail = async (
 
     router.push('/');
     return toast.success('Activate your new email.');
+  } catch (err: any) {
+    return firebaseError(err);
+  }
+};
+
+export const changePassword = async (user: IAuth, oldPassword: string, newPassword: string) => {
+  try {
+    const res = await reAuth(user, oldPassword);
+    if (res) return toast.error('Authentication Failed!');
+
+    await updatePassword(user, newPassword);
+
+    return toast.success('Updated New Password.');
   } catch (err: any) {
     return firebaseError(err);
   }
