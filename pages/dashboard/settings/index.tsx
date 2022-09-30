@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import DashboardLayout from '../../../components/Layout/Dashboard';
 import { Dropdown, SidebarBlock } from '../../../components/Layout/Dashboard/SidebarTopic';
+import Account from '../../../components/Profile/Settings/Account';
 
 const topics = ['change-profile', 'change-name', 'change-email', 'password'];
 
@@ -34,11 +35,7 @@ const Settings = () => {
         </button>
       )}
       <DashboardLayout title='Settings'>
-        <h3>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia deleniti perspiciatis
-          odio officia quidem totam magnam dolorem explicabo deserunt nulla eligendi quia, facere
-          veritatis blanditiis, neque quod, quasi nisi sit!
-        </h3>
+        <Account />
       </DashboardLayout>
     </div>
   );
