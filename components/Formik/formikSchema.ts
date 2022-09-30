@@ -34,3 +34,7 @@ export const profileSchema = Yup.object().shape({
   website: Yup.string().url(),
   about: Yup.string().min(5, 'too small!').max(500, 'Too Long String'),
 });
+
+export const nameSchema = Yup.object().shape({
+  name: Yup.string().required('Your name is required.').min(3, 'Too short.').max(25, 'Too long.'),
+});
