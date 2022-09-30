@@ -5,9 +5,13 @@ import {
   GoogleAuthProvider,
   reauthenticateWithCredential,
   reauthenticateWithPopup,
+  sendEmailVerification,
   updateCurrentUser,
+  updateEmail,
   updateProfile,
 } from 'firebase/auth';
+import { NextRouter } from 'next/router';
+import { toast } from 'react-toastify';
 import { auth } from '../../config';
 import { IAuth } from '../../interface/authType';
 import firebaseError from '../../utils/firebaseError';
@@ -51,5 +55,28 @@ const reAuth = async (user: IAuth, pass: string) => {
     }
   } catch (err: any) {
     return true;
+  }
+};
+
+export const changeEmail = async (
+  user: IAuth,
+  newEmail: string,
+  password: string,
+  router: NextRouter
+) => {
+  try {
+    const result = await reAuth(user, password);
+    if (result) return toast.error('Authentication Failed!');
+
+    await sendEmailVerification(user);
+
+    await updateEmail(user, newEmail);
+    await sendEmailVerification(user);
+    await updateCurrentUser(auth, user);
+
+    router.push('/');
+    return toast.success('Activate your new email.');
+  } catch (err: any) {
+    return firebaseError(err);
   }
 };
