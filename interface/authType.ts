@@ -28,3 +28,12 @@ export interface IForgotPassword {
   email: string;
   router?: NextRouter;
 }
+
+export interface IProfile {
+  fullName: string;
+  contactEmail: string;
+  phone: string;
+  website: string;
+  address: string;
+  about: string;
+}
