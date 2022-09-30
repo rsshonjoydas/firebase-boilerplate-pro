@@ -19,3 +19,18 @@ export const loginSchema = Yup.object().shape({
 export const emailSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email.').required('The email is required.'),
 });
+
+export const profileSchema = Yup.object().shape({
+  fullName: Yup.string().min(3, 'Too short.').max(25, 'Too long.'),
+  contactEmail: Yup.string().email('Invalid email.'),
+  address: Yup.string().nullable(),
+  phone: Yup.number()
+    .typeError("That doesn't look like a phone number")
+    .positive("A phone number can't start with a minus")
+    .integer("A phone number can't include a decimal point")
+    .min(1000000000, 'Too short')
+    .max(9999999999, 'Too long'),
+  // .required('A phone number is required'),
+  website: Yup.string().url(),
+  about: Yup.string().min(5, 'too small!').max(500, 'Too Long String'),
+});
