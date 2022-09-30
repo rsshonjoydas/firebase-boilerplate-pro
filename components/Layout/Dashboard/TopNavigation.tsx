@@ -11,7 +11,7 @@ const Search = () => (
   </div>
 );
 
-const BellIcon = () => <FontAwesomeIcon icon={faBell} className='h-5 mb-3 top-navigation-icon' />;
+const BellIcon = () => <FontAwesomeIcon icon={faBell} className='h-5 mb-2 top-navigation-icon' />;
 
 const TopNavigation = () => (
   <div className='top-navigation'>
@@ -20,8 +20,10 @@ const TopNavigation = () => (
     </span>
     <Search />
     <div className='flex items-end justify-center mr-4'>
-      <BellIcon />
-      <Theme className='dark:hover:bg-gray-600' />
+      <span className='flex items-center justify-center'>
+        <BellIcon />
+        <Theme className='mb-1.5 dark:hover:bg-gray-600' />
+      </span>
       <UserPhoto />
     </div>
   </div>
